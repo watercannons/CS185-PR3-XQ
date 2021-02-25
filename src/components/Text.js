@@ -60,7 +60,7 @@ class Text extends React.Component {
 
             <br/><br/>
             
-            <input type = "submit" value = "Done, submit"/>
+            <input type = "submit" value = "Submit"/>
 
           </form>
       </div>
