@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import React from 'react'
+import Body from './components/Body'
+import TabList from './components/TabList'
+
+class App extends React.Component {
+
+  constructor(props){
+    super(props)
+
+    this.state = {
+      currentSelectedTabID : 0
+    }
+
+    this.myAge = 10;
+
+    this.switchTabs = this.switchTabs.bind(this)
+  }
+
+  switchTabs(newState){
+    this.setState(
+      state =>{
+        return {currentSelectedTabID: newState}
+      }
+    )
+  }
+
+
+  render() {
+
+    let pageStyle = {
+      paddingTop : "15px",
+      paddingLeft : "15px"
+    }
+
+    return (
+    <div style = {pageStyle}>
+      <TabList 
+        changeTabs={this.switchTabs} 
+        selectedTab={this.state.currentSelectedTabID}
+      />
+      <Body selectedTab={this.state.currentSelectedTabID}/>
     </div>
-  );
+    )
+  }
 }
+
+
 
 export default App;
